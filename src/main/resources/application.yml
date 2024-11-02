@@ -1,0 +1,22 @@
+spring:
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+  batch:
+    job:
+      names: ${job.name:NONE}
+    jdbc:
+      initialize-schema: ALWAYS
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/exam_10_31?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    com.koreait.exit.exam_10_31: debug

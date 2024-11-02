@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>자동 응답 게시판</title>
+    <style>
+        /* 전체 페이지 설정 */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            font-size: 24px;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        /* 폼 스타일 */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* 버튼 스타일 */
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* 답변 섹션 스타일 */
+        .response {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .response h2 {
+            font-size: 18px;
+            color: #333333;
+        }
+
+        .response p {
+            font-size: 16px;
+            color: #555555;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>자동 응답 게시판</h1>
+
+    <form action="/ask" method="post">
+        <label for="userQuestion">질문을 입력하세요:</label>
+        <input type="text" id="userQuestion" name="userQuestion" required>
+        <button type="submit">질문하기</button>
+    </form>
+
+    <div class="response" th:if="${userQuestion}">
+        <h2>사용자 질문:</h2>
+        <p th:text="${userQuestion}"></p>
+        <h2>시스템 답변:</h2>
+        <p th:text="${systemAnswer}"></p>
+    </div>
+</div>
+</body>
+</html>
